@@ -1,0 +1,83 @@
+{
+  "contract_version": "1.0",
+  "generated_at": "2026-08-09T00:00:00Z",
+  "subject": {
+    "display_name": "Pessoa exemplo",
+    "role_lens": ["engineering"],
+    "role_basis": "explicit",
+    "intended_audience": "subject_private"
+  },
+  "scope": {
+    "sources": ["opencode_local", "codex_local"],
+    "period": {"from": "2026-07-01", "to": "2026-07-31"},
+    "excluded_sources": [{"source": "cursor", "reason": "histórico local não encontrado"}],
+    "overall_coverage": "medium",
+    "comparability_warnings": ["As fontes têm janelas de retenção e granularidade diferentes."]
+  },
+  "dimensions": [
+    {
+      "id": "framing", "status": "scored", "score": 4, "confidence": "high", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "Objetivos e critérios de aceite aparecem antes da execução em casos representativos.", "evidence_refs": ["opencode_local:obs-001"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": [], "limitations": [], "recommendation": "Preservar o contrato curto de abertura em tarefas ambíguas.",
+      "evidence_excerpts": [{"text": "Exemplo sintético: definir escopo e verificação antes de alterar o artefato.", "source": "opencode_local", "date": "2026-07-11", "locator": "example-001"}]
+    },
+    {
+      "id": "grounding", "status": "scored", "score": 4, "confidence": "medium", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "A investigação usa fontes locais e verificações antes de concluir uma mudança.", "evidence_refs": ["codex_local:obs-002"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": [], "limitations": ["Nem toda fonte retém contexto detalhado."], "recommendation": "Registrar a fonte de verdade quando a decisão depender de contexto externo."
+    },
+    {
+      "id": "routing", "status": "scored", "score": 3, "confidence": "medium", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "Ferramentas de pesquisa, leitura e execução aparecem combinadas em fluxos distintos.", "evidence_refs": ["opencode_local:obs-003"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": ["codex_local:obs-004"], "limitations": [], "recommendation": "Explicitar o critério de delegação e a síntese esperada."
+    },
+    {
+      "id": "context", "status": "scored", "score": 3, "confidence": "medium", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "Há checkpoints de descoberta e validação, mas a troca de fase nem sempre é explicitada.", "evidence_refs": ["opencode_local:obs-005"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": [], "limitations": [], "recommendation": "Marcar transições entre descoberta, decisão e implementação."
+    },
+    {
+      "id": "validation", "status": "scored", "score": 4, "confidence": "high", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "O fechamento inclui verificações proporcionais ao tipo de alteração.", "evidence_refs": ["codex_local:obs-006"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": [], "limitations": [], "recommendation": "Manter evidência de validação junto ao handoff."
+    },
+    {
+      "id": "handoff", "status": "scored", "score": 3, "confidence": "medium", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "Os resultados costumam indicar o que foi feito e quais verificações ocorreram.", "evidence_refs": ["opencode_local:obs-007"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": [], "limitations": [], "recommendation": "Padronizar bloqueios, limites e próximos passos no fechamento."
+    },
+    {
+      "id": "reuse", "status": "scored", "score": 2, "confidence": "low", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "Há poucos sinais suficientes para afirmar que padrões recorrentes viram ativos reutilizáveis.", "evidence_refs": ["codex_local:obs-008"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": [], "limitations": ["A retenção local não mostra todos os artefatos de reuso."], "recommendation": "Converter fluxos repetidos em templates ou skills pequenas."
+    },
+    {
+      "id": "safety", "status": "scored", "score": 4, "confidence": "medium", "role_lens": ["engineering"],
+      "claims": [{"classification": "observed", "text": "Ações de escrita e comandos são acompanhados por validação e limites de escopo.", "evidence_refs": ["opencode_local:obs-009"], "reasoning": null, "alternative_explanation": null}],
+      "counterevidence_refs": [], "limitations": [], "recommendation": "Manter gates explícitos para ações irreversíveis ou externas."
+    }
+  ],
+  "overall": {
+    "score": 3.4,
+    "score_status": "published",
+    "measurable_dimensions": 8,
+    "confidence": "medium",
+    "summary": "Exemplo sintético de um workflow com boa validação e oportunidades de melhorar roteamento, transições de contexto e reuso. Não representa uma pessoa real."
+  },
+  "strengths": [
+    {"text": "Validação proporcional ao risco aparece de forma recorrente.", "evidence_refs": ["codex_local:obs-006"]},
+    {"text": "Objetivos e critérios de aceite são estabelecidos antes da execução em tarefas representativas.", "evidence_refs": ["opencode_local:obs-001"]}
+  ],
+  "frictions": [
+    {"title": "Roteamento pouco explícito", "text": "A escolha entre execução direta e delegação não é sempre declarada, dificultando a síntese posterior.", "evidence_refs": ["opencode_local:obs-003"], "confidence": "medium"},
+    {"title": "Reuso subobservado", "text": "A amostra traz poucos sinais de que aprendizados recorrentes foram convertidos em ativos reutilizáveis.", "evidence_refs": ["codex_local:obs-008"], "confidence": "low"}
+  ],
+  "priorities": [
+    {"priority": 1, "action": "Abrir tarefas ambíguas com objetivo, restrições e critério de pronto.", "why": "Reduz retrabalho e melhora a delegação.", "success_signal": "O handoff registra o plano e a validação esperada.", "evidence_refs": ["opencode_local:obs-001"]},
+    {"priority": 2, "action": "Registrar por que uma tarefa foi delegada ou mantida no fluxo principal.", "why": "Torna a integração de resultados revisável.", "success_signal": "Cada delegação traz contrato de saída e síntese.", "evidence_refs": ["opencode_local:obs-003"]},
+    {"priority": 3, "action": "Transformar um fluxo repetido em template ou skill pequena.", "why": "Reduz o custo da próxima ocorrência.", "success_signal": "Um padrão recorrente passa a ter artefato reutilizável.", "evidence_refs": ["codex_local:obs-008"]}
+  ],
+  "not_measurable": ["Impacto causal no resultado de negócio"],
+  "methodology_warnings": ["Tokens, duração e volume de tools não são usados isoladamente como proxy de qualidade.", "Os dados são inteiramente sintéticos e existem apenas para validar os artefatos de exemplo."],
+  "privacy": {"raw_prompts_in_report": false, "secrets_detected": 0, "sensitive_evidence_omitted": 0, "sharing_default": "private"}
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Assess AI Workflow"
+  short_description: "Audita uso local e gera HTML mais dossiê"
+  default_prompt: "Use $assess-ai-workflow para auditar meu histórico local de IA e gerar o HTML mais o Markdown privado de evidências."
